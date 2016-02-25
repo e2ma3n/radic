@@ -23,7 +23,7 @@ function usage_f {
 	echo "	radic --start"
 	echo "	radic --stop"
 	echo "	radic --status"
-	echo "	radoc --test_mail"
+	echo "	radic --test_mail"
 	echo "	radic --test_sms"
 }
 
