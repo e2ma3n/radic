@@ -29,7 +29,7 @@ function install_f {
 	sleep 1
 	[ ! -f /opt/radic_v1/radic.sh ] && cp radic.sh /opt/radic_v1/ && chmod 700 /opt/radic_v1/radic.sh && echo "[+] radic.sh copied" || echo "[-] Error: /opt/radic_v1/radic.sh exist"
 	sleep 1
-	[ -f /opt/radic_v1/radic.sh ] && ln -s /opt/radic_v1/radic.sh /usr/bin/radic && echo "[+] symbolic link created" || echo "[-] Error: /opt/radic_v1/radic.sh not found"
+	[ -f /opt/radic_v1/radic.sh ] && ln -s /opt/radic_v1/radic.sh /usr/bin/radic && echo "[+] symbolic link created" || echo "[-] Error: symbolic link not created"
 	sleep 1
 	[ ! -d /opt/radic_v1/log/ ] && mkdir -p /opt/radic_v1/log/ && echo "[+] Log Directory created" || echo "[-] /opt/radic_v1/log/ exist"
 	sleep 1
