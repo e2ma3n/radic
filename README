@@ -8,7 +8,7 @@ radic v1.0 [checking memory, cpu, disk usages and send email and sms alarm when 
 
 
 Description :
-	This program Written by E2MA3N for monitoring memory, cpu and disk usages On Linux Systems. this is a simple program for Alerting SysAdmins with text message and email in emergency conditions
+This program Written by E2MA3N for monitoring memory, cpu and disk usages On Linux Systems. this is a simple program for Alerting SysAdmins with text message and email in emergency conditions
 
 
 Dependencies :
@@ -25,11 +25,13 @@ Dependencies :
 
 
 Install radic v1.0 :
-	1. sudo ./install.sh -i
+	1. chmod +x install.sh
+	2. sudo ./install.sh -i
 
 
-Check radic dependencies :
-	1. sudo ./install.sh -c
+Check dependencies :
+	1. chmod +x install.sh
+	2. sudo ./install.sh -c
 
 
 Install mailx in debian :
