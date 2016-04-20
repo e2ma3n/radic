@@ -8,19 +8,19 @@
 # radic v1.5 [checking memory, cpu, disk usages and send email and sms alarm when these where full]
 # ------------------------------------------------------------------------------------------------ #
 
-Suser=`cat /opt/radic_v1/radic.conf | head -n 9 | tail -n 1 | cut -d = -f 2`
-Spass=`cat /opt/radic_v1/radic.conf | head -n 11 | tail -n 1 | cut -d = -f 2`
-Sto=`cat /opt/radic_v1/radic.conf | head -n 13 | tail -n 1 | cut -d = -f 2`
-Sline=`cat /opt/radic_v1/radic.conf | head -n 15 | tail -n 1 | cut -d = -f 2`
-IP=`cat /opt/radic_v1/radic.conf | head -n 17 | tail -n 1 | cut -d = -f 2`
-cmore=`cat /opt/radic_v1/radic.conf | head -n 19 | tail -n 1 | cut -d = -f 2`
-rmore=`cat /opt/radic_v1/radic.conf | head -n 21 | tail -n 1 | cut -d = -f 2`
-dmore=`cat /opt/radic_v1/radic.conf | head -n 23 | tail -n 1 | cut -d = -f 2`
-delay=`cat /opt/radic_v1/radic.conf | head -n 25 | tail -n 1 | cut -d = -f 2`
-smtp_srv=`cat /opt/radic_v1/radic.conf | head -n 27 | tail -n 1 | cut -d = -f 2`
-smtp_user=`cat /opt/radic_v1/radic.conf | head -n 29 | tail -n 1 | cut -d = -f 2`
-smtp_pass=`cat /opt/radic_v1/radic.conf | head -n 31 | tail -n 1 | cut -d = -f 2`
-mail_to=`cat /opt/radic_v1/radic.conf | head -n 33 | tail -n 1 | cut -d = -f 2`
+Suser=`cat /opt/radic_v1.5/radic.conf | head -n 9 | tail -n 1 | cut -d = -f 2`
+Spass=`cat /opt/radic_v1.5/radic.conf | head -n 11 | tail -n 1 | cut -d = -f 2`
+Sto=`cat /opt/radic_v1.5/radic.conf | head -n 13 | tail -n 1 | cut -d = -f 2`
+Sline=`cat /opt/radic_v1.5/radic.conf | head -n 15 | tail -n 1 | cut -d = -f 2`
+IP=`cat /opt/radic_v1.5/radic.conf | head -n 17 | tail -n 1 | cut -d = -f 2`
+cmore=`cat /opt/radic_v1.5/radic.conf | head -n 19 | tail -n 1 | cut -d = -f 2`
+rmore=`cat /opt/radic_v1.5/radic.conf | head -n 21 | tail -n 1 | cut -d = -f 2`
+dmore=`cat /opt/radic_v1.5/radic.conf | head -n 23 | tail -n 1 | cut -d = -f 2`
+delay=`cat /opt/radic_v1.5/radic.conf | head -n 25 | tail -n 1 | cut -d = -f 2`
+smtp_srv=`cat /opt/radic_v1.5/radic.conf | head -n 27 | tail -n 1 | cut -d = -f 2`
+smtp_user=`cat /opt/radic_v1.5/radic.conf | head -n 29 | tail -n 1 | cut -d = -f 2`
+smtp_pass=`cat /opt/radic_v1.5/radic.conf | head -n 31 | tail -n 1 | cut -d = -f 2`
+mail_to=`cat /opt/radic_v1.5/radic.conf | head -n 33 | tail -n 1 | cut -d = -f 2`
 
 disk_check=0
 for (( ;; )) ; do
@@ -59,9 +59,9 @@ for (( ;; )) ; do
 		msg="IP=$IP$CPU$RAM$DISK"
 		out=`curl "http://n.sms.ir/SendMessage.ashx?text=$msg&lineno=$Sline&to=$Sto&user=$Suser&pass=$Spass"`
 		if [ "$out" != "ok" ] ; then
-			echo -n "[-] " >> /opt/radic_v1/log/errors.log ; date >> /opt/radic_v1/log/errors.log
-			echo "[-] Error: we have problem on send-sms" >> /opt/radic_v1/log/errors.log
-			echo "[-] ------------------------------------------------ [-]" >> /opt/radic_v1/log/errors.log
+			echo -n "[-] " >> /opt/radic_v1.5/log/errors.log ; date >> /opt/radic_v1.5/log/errors.log
+			echo "[-] Error: we have problem on send-sms" >> /opt/radic_v1.5/log/errors.log
+			echo "[-] ------------------------------------------------ [-]" >> /opt/radic_v1.5/log/errors.log
 		fi
 	}
 
@@ -73,9 +73,9 @@ for (( ;; )) ; do
 		text=`echo "$t2" ; echo "IP : $IP" ; echo $CPU_mail ; echo $RAM_mail ; echo $DISK_mail`
 		echo "$text" | mailx -v -r "$smtp_user" -s "Radic - $t1" -S smtp=$smtp_srv -S smtp-use-starttls -S smtp-auth=login -S smtp-auth-user=$smtp_user -S smtp-auth-password=$smtp_pass -S ssl-verify=ignore -S nss-config-dir=/etc/pki/nssdb/ $mail_to &> /dev/null
 		if [ "$?" != "0" ] ; then
-			echo -n "[-] " >> /opt/radic_v1/log/errors.log ; date >> /opt/radic_v1/log/errors.log
-			echo "[-] Error: we have problem on send-mail" >> /opt/radic_v1/log/errors.log
-			echo "[-] ------------------------------------------------ [-]" >> /opt/radic_v1/log/errors.log
+			echo -n "[-] " >> /opt/radic_v1.5/log/errors.log ; date >> /opt/radic_v1.5/log/errors.log
+			echo "[-] Error: we have problem on send-mail" >> /opt/radic_v1.5/log/errors.log
+			echo "[-] ------------------------------------------------ [-]" >> /opt/radic_v1.5/log/errors.log
 		fi
 	}
 
