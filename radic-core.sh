@@ -5,7 +5,7 @@
 # Special tnx to : Mohamad Varmazyar, varmazyar@oslearn.ir
 # Website : http://OSLearn.ir
 # License : GPL v3.0
-# radic v1.0 [checking memory, cpu, disk usages and send email and sms alarm when these where full]
+# radic v1.5 [checking memory, cpu, disk usages and send email and sms alarm when these where full]
 # ------------------------------------------------------------------------------------------------ #
 
 Suser=`cat /opt/radic_v1/radic.conf | head -n 9 | tail -n 1 | cut -d = -f 2`
@@ -67,8 +67,11 @@ for (( ;; )) ; do
 
 	# send mail function
 	function send-mail {
-		text=`echo "IP = $IP" ; echo $CPU_mail ; echo $RAM_mail ; echo $DISK_mail`
-		echo "$text" | mailx -v -r "$smtp_user" -s "Radic - $IP" -S smtp=$smtp_srv -S smtp-use-starttls -S smtp-auth=login -S smtp-auth-user=$smtp_user -S smtp-auth-password=$smtp_pass -S ssl-verify=ignore -S nss-config-dir=/etc/pki/nssdb/ $mail_to &> /dev/null
+		t1=`echo -n '20' ; date '+%y/%m/%d'`
+		t2=`echo -n '20' DATE: ; date '+%y/%m/%d TIME: %H:%M:%S'`
+
+		text=`echo "$t2" ; echo "IP : $IP" ; echo $CPU_mail ; echo $RAM_mail ; echo $DISK_mail`
+		echo "$text" | mailx -v -r "$smtp_user" -s "Radic - $t1" -S smtp=$smtp_srv -S smtp-use-starttls -S smtp-auth=login -S smtp-auth-user=$smtp_user -S smtp-auth-password=$smtp_pass -S ssl-verify=ignore -S nss-config-dir=/etc/pki/nssdb/ $mail_to &> /dev/null
 		if [ "$?" != "0" ] ; then
 			echo -n "[-] " >> /opt/radic_v1/log/errors.log ; date >> /opt/radic_v1/log/errors.log
 			echo "[-] Error: we have problem on send-mail" >> /opt/radic_v1/log/errors.log
