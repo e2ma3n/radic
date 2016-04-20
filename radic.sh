@@ -12,10 +12,10 @@
 [ "`whoami`" != "root" ] && echo -e '[-] Please use root user or sudo' && exit 1
 
 # check config file
-[ ! -f /opt/radic_v1/radic.conf ] && echo -e "\e[91m[-]\e[0m Error: can not find config file" && exit 1
+[ ! -f /opt/radic_v1.5/radic.conf ] && echo -e "\e[91m[-]\e[0m Error: can not find config file" && exit 1
 
 # check radic-core.sh
-[ ! -f /opt/radic_v1/radic-core.sh ] && echo -e "\e[91m[-]\e[0m Error: can not find radic-core.sh" && exit 1
+[ ! -f /opt/radic_v1.5/radic-core.sh ] && echo -e "\e[91m[-]\e[0m Error: can not find radic-core.sh" && exit 1
 
 # help function
 function usage_f {
@@ -32,7 +32,7 @@ function start_f {
 	if [ "$?" = "0" ] ; then
 		echo -e "\e[91m[-]\e[0m Error: radic service is active"
 	else
-		/opt/radic_v1/radic-core.sh &> /dev/null &
+		/opt/radic_v1.5/radic-core.sh &> /dev/null &
 		[ "$?" = "0" ] && echo "[+] Starting radic ..." && sleep 2 && echo -e "\e[92m[+]\e[0m Ok" || echo -e "\e[91m[-]\e[0m Error: radic service not started"
 	fi
 }
@@ -54,10 +54,10 @@ function status_f {
 function test_mail {
 	t1=`echo -n '20' ; date '+%y/%m/%d'`
 	t2=`echo -n '20' DATE: ; date '+%y/%m/%d TIME: %H:%M:%S'`
-	smtp_srv=`cat /opt/radic_v1/radic.conf | head -n 27 | tail -n 1 | cut -d = -f 2`
-	smtp_user=`cat /opt/radic_v1/radic.conf | head -n 29 | tail -n 1 | cut -d = -f 2`
-	smtp_pass=`cat /opt/radic_v1/radic.conf | head -n 31 | tail -n 1 | cut -d = -f 2`
-	mail_to=`cat /opt/radic_v1/radic.conf | head -n 33 | tail -n 1 | cut -d = -f 2`
+	smtp_srv=`cat /opt/radic_v1.5/radic.conf | head -n 27 | tail -n 1 | cut -d = -f 2`
+	smtp_user=`cat /opt/radic_v1.5/radic.conf | head -n 29 | tail -n 1 | cut -d = -f 2`
+	smtp_pass=`cat /opt/radic_v1.5/radic.conf | head -n 31 | tail -n 1 | cut -d = -f 2`
+	mail_to=`cat /opt/radic_v1.5/radic.conf | head -n 33 | tail -n 1 | cut -d = -f 2`
 	IP=127.0.0.1
 	CPU_mail=Testing
 	RAM_mail=Testing
@@ -67,10 +67,10 @@ function test_mail {
 }
 
 function test_sms {
-	Suser=`cat /opt/radic_v1/radic.conf | head -n 9 | tail -n 1 | cut -d = -f 2`
-	Spass=`cat /opt/radic_v1/radic.conf | head -n 11 | tail -n 1 | cut -d = -f 2`
-	Sto=`cat /opt/radic_v1/radic.conf | head -n 13 | tail -n 1 | cut -d = -f 2`
-	Sline=`cat /opt/radic_v1/radic.conf | head -n 15 | tail -n 1 | cut -d = -f 2`
+	Suser=`cat /opt/radic_v1.5/radic.conf | head -n 9 | tail -n 1 | cut -d = -f 2`
+	Spass=`cat /opt/radic_v1.5/radic.conf | head -n 11 | tail -n 1 | cut -d = -f 2`
+	Sto=`cat /opt/radic_v1.5/radic.conf | head -n 13 | tail -n 1 | cut -d = -f 2`
+	Sline=`cat /opt/radic_v1.5/radic.conf | head -n 15 | tail -n 1 | cut -d = -f 2`
 	msg="Radic_testing"
 	curl "http://n.sms.ir/SendMessage.ashx?text=$msg&lineno=$Sline&to=$Sto&user=$Suser&pass=$Spass" ; echo
 }
