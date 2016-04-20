@@ -68,7 +68,7 @@ for (( ;; )) ; do
 	# send mail function
 	function send-mail {
 		t1=`echo -n '20' ; date '+%y/%m/%d'`
-		t2=`echo -n '20' DATE: ; date '+%y/%m/%d TIME: %H:%M:%S'`
+		t2=`echo -n 'DATE: 20' ; date '+%y/%m/%d TIME: %H:%M:%S'`
 
 		text=`echo "$t2" ; echo "IP : $IP" ; echo $CPU_mail ; echo $RAM_mail ; echo $DISK_mail`
 		echo "$text" | mailx -v -r "$smtp_user" -s "Radic - $t1" -S smtp=$smtp_srv -S smtp-use-starttls -S smtp-auth=login -S smtp-auth-user=$smtp_user -S smtp-auth-password=$smtp_pass -S ssl-verify=ignore -S nss-config-dir=/etc/pki/nssdb/ $mail_to &> /dev/null
