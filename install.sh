@@ -5,7 +5,7 @@
 # Special tnx to : Mohamad Varmazyar, varmazyar@oslearn.ir
 # Website : http://OSLearn.ir
 # License : GPL v3.0
-# radic v1.0 [checking memory, cpu, disk usages and send email and sms alarm when these where full]
+# radic v1.5 [checking memory, cpu, disk usages and send email and sms alarm when these where full]
 # ------------------------------------------------------------------------------------------------ #
 
 # check root privilege
