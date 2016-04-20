@@ -33,6 +33,8 @@ function install_f {
 	sleep 1
 	[ ! -d /opt/radic_v1.5/log/ ] && mkdir -p /opt/radic_v1.5/log/ && echo "[+] Log Directory created" || echo "[-] /opt/radic_v1.5/log/ exist"
 	sleep 1
+	[ ! -f /opt/radic_v1.5/README ] && cp README /opt/radic_v1.5/ ; echo '[+] Please see README'
+	sleep 0.5
 	echo "[+] Please see README" ; sleep 0.5
 	echo "[+] you have two choises : start manually or Starting up Script As a daemon" ; sleep 0.5
 	echo "[!] Warning: You should run program as root" ; sleep 0.5
