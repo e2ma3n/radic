@@ -53,7 +53,7 @@ function status_f {
 
 function test_mail {
 	t1=`echo -n '20' ; date '+%y/%m/%d'`
-	t2=`echo -n '20' DATE: ; date '+%y/%m/%d TIME: %H:%M:%S'`
+	t2=`echo -n 'DATE: 20' ; date '+%y/%m/%d TIME: %H:%M:%S'`
 	smtp_srv=`cat /opt/radic_v1.5/radic.conf | head -n 27 | tail -n 1 | cut -d = -f 2`
 	smtp_user=`cat /opt/radic_v1.5/radic.conf | head -n 29 | tail -n 1 | cut -d = -f 2`
 	smtp_pass=`cat /opt/radic_v1.5/radic.conf | head -n 31 | tail -n 1 | cut -d = -f 2`
