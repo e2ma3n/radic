@@ -4,7 +4,7 @@ Email : e2ma3n@Gmail.com
 Special tnx to : Mohamad Varmazyar, varmazyar@oslearn.ir
 Website : http://OSLearn.ir
 License : GPL v3.0
-radic v1.0 [checking memory, cpu, disk usages and send email and sms alarm when these where full]
+radic v1.5 [checking memory, cpu, disk usages and send email and sms alarm when these where full]
 
 
 Description :
@@ -24,7 +24,7 @@ Dependencies :
 	10. iostat
 
 
-Install radic v1.0 :
+Install radic v1.5 :
 	1. chmod +x install.sh
 	2. sudo ./install.sh -i
 
@@ -55,13 +55,13 @@ Testing program :
 	2. radic --test_sms # please see verbose
 
 
-Usage radic v1.0 :
+Usage radic v1.5 :
 	1. sudo radic --status # for check program's status
 	2. sudo radic --start # for start program in background
 	3. sudo radic --stop # for stop program service
 
 
-Uninstall radic v1.0 :
+Uninstall radic v1.5 :
 	1. rm -rf /opt/radic_v1/
 	2. rm -f /usr/bin/radic
 
