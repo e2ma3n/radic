@@ -5,7 +5,7 @@
 # Special tnx to : Mohamad Varmazyar, varmazyar@oslearn.ir
 # Website : http://OSLearn.ir
 # License : GPL v3.0
-# radic v1.0 [checking memory, cpu, disk usages and send email and sms alarm when these where full]
+# radic v1.5 [checking memory, cpu, disk usages and send email and sms alarm when these where full]
 # ------------------------------------------------------------------------------------------------ #
 
 # check root privilege
@@ -52,16 +52,18 @@ function status_f {
 }
 
 function test_mail {
+	t1=`echo -n '20' ; date '+%y/%m/%d'`
+	t2=`echo -n '20' DATE: ; date '+%y/%m/%d TIME: %H:%M:%S'`
 	smtp_srv=`cat /opt/radic_v1/radic.conf | head -n 27 | tail -n 1 | cut -d = -f 2`
 	smtp_user=`cat /opt/radic_v1/radic.conf | head -n 29 | tail -n 1 | cut -d = -f 2`
 	smtp_pass=`cat /opt/radic_v1/radic.conf | head -n 31 | tail -n 1 | cut -d = -f 2`
 	mail_to=`cat /opt/radic_v1/radic.conf | head -n 33 | tail -n 1 | cut -d = -f 2`
 	IP=127.0.0.1
-	CPU_mail=testing
-	RAM_mail=testing
-	DISK_mail=testing
-	text=`echo "IP = $IP" ; echo $CPU_mail ; echo $RAM_mail ; echo $DISK_mail`
-	echo "$text" | mailx -v -r "$smtp_user" -s "radic mail testing" -S smtp=$smtp_srv -S smtp-use-starttls -S smtp-auth=login -S smtp-auth-user=$smtp_user -S smtp-auth-password=$smtp_pass -S ssl-verify=ignore -S nss-config-dir=/etc/pki/nssdb/ $mail_to
+	CPU_mail=Testing
+	RAM_mail=Testing
+	DISK_mail=Testing
+	text=`echo "$t2" ; echo "IP : $IP" ; echo $CPU_mail ; echo $RAM_mail ; echo $DISK_mail`
+	echo "$text" | mailx -v -r "$smtp_user" -s "Radic - $t1" -S smtp=$smtp_srv -S smtp-use-starttls -S smtp-auth=login -S smtp-auth-user=$smtp_user -S smtp-auth-password=$smtp_pass -S ssl-verify=ignore -S nss-config-dir=/etc/pki/nssdb/ $mail_to
 }
 
 function test_sms {
@@ -69,7 +71,7 @@ function test_sms {
 	Spass=`cat /opt/radic_v1/radic.conf | head -n 11 | tail -n 1 | cut -d = -f 2`
 	Sto=`cat /opt/radic_v1/radic.conf | head -n 13 | tail -n 1 | cut -d = -f 2`
 	Sline=`cat /opt/radic_v1/radic.conf | head -n 15 | tail -n 1 | cut -d = -f 2`
-	msg="radic_testing"
+	msg="Radic_testing"
 	curl "http://n.sms.ir/SendMessage.ashx?text=$msg&lineno=$Sline&to=$Sto&user=$Suser&pass=$Spass" ; echo
 }
 
