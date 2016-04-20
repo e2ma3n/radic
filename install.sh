@@ -21,17 +21,17 @@ function help_f {
 
 # install program on system
 function install_f {
-	[ ! -d /opt/radic_v1/ ] && mkdir -p /opt/radic_v1/ && echo "[+] Directory created" || echo "[-] Error: /opt/radic_v1/ exist"
+	[ ! -d /opt/radic_v1.5/ ] && mkdir -p /opt/radic_v1.5/ && echo "[+] Directory created" || echo "[-] Error: /opt/radic_v1.5/ exist"
 	sleep 1
-	[ ! -f /opt/radic_v1/radic-core.sh ] && cp radic-core.sh /opt/radic_v1/ && chmod 700 /opt/radic_v1/radic-core.sh && echo "[+] radic-core.sh copied" || echo "[-] Error: /opt/radic_v1/radic-core.sh exist"
+	[ ! -f /opt/radic_v1.5/radic-core.sh ] && cp radic-core.sh /opt/radic_v1.5/ && chmod 700 /opt/radic_v1.5/radic-core.sh && echo "[+] radic-core.sh copied" || echo "[-] Error: /opt/radic_v1.5/radic-core.sh exist"
 	sleep 1
-	[ ! -f /opt/radic_v1/radic.conf ] && cp radic.conf /opt/radic_v1/ && chmod 700 /opt/radic_v1/radic.conf && echo "[+] radic.conf copied" || echo "[-] Error: /opt/radic_v1/radic.conf exist"
+	[ ! -f /opt/radic_v1.5/radic.conf ] && cp radic.conf /opt/radic_v1.5/ && chmod 700 /opt/radic_v1.5/radic.conf && echo "[+] radic.conf copied" || echo "[-] Error: /opt/radic_v1.5/radic.conf exist"
 	sleep 1
-	[ ! -f /opt/radic_v1/radic.sh ] && cp radic.sh /opt/radic_v1/ && chmod 700 /opt/radic_v1/radic.sh && echo "[+] radic.sh copied" || echo "[-] Error: /opt/radic_v1/radic.sh exist"
+	[ ! -f /opt/radic_v1.5/radic.sh ] && cp radic.sh /opt/radic_v1.5/ && chmod 700 /opt/radic_v1.5/radic.sh && echo "[+] radic.sh copied" || echo "[-] Error: /opt/radic_v1.5/radic.sh exist"
 	sleep 1
-	[ -f /opt/radic_v1/radic.sh ] && ln -s /opt/radic_v1/radic.sh /usr/bin/radic && echo "[+] symbolic link created" || echo "[-] Error: symbolic link not created"
+	[ -f /opt/radic_v1.5/radic.sh ] && ln -s /opt/radic_v1.5/radic.sh /usr/bin/radic && echo "[+] symbolic link created" || echo "[-] Error: symbolic link not created"
 	sleep 1
-	[ ! -d /opt/radic_v1/log/ ] && mkdir -p /opt/radic_v1/log/ && echo "[+] Log Directory created" || echo "[-] /opt/radic_v1/log/ exist"
+	[ ! -d /opt/radic_v1.5/log/ ] && mkdir -p /opt/radic_v1.5/log/ && echo "[+] Log Directory created" || echo "[-] /opt/radic_v1.5/log/ exist"
 	sleep 1
 	echo "[+] Please see README" ; sleep 0.5
 	echo "[+] you have two choises : start manually or Starting up Script As a daemon" ; sleep 0.5
@@ -44,7 +44,7 @@ function install_f {
 # uninstall program from system
 function uninstall_f {
 	echo "For uninstall program:"
-	echo "	sudo rm -rf /opt/radic_v1"
+	echo "	sudo rm -rf /opt/radic_v1.5"
 	echo "	sudo rm -f /usr/bin/radic"
 }
 
