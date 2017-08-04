@@ -1,6 +1,6 @@
-# Radic - Alerting sysadmins with text message and email in emergency conditions 
+# Radic - Alerting to sysadmins with text message and email in emergency conditions 
 ## Introduction
-This program written by E2MA3N for monitoring memory, cpu and disk usages On linux systems. this is a simple program for Alerting sysadmins with text message and email in emergency conditions.
+This program written by E2MA3N for monitoring memory, cpu and disk usages On linux systems. this is a simple program for Alerting to sysadmins with text message and email in emergency conditions.
 
 The project page is located at https://github.com/e2ma3n/radic
 
