@@ -53,6 +53,9 @@ if [ ! -z "$1" ] ; then
 	esac
 else
 
+	echo '[+] starting program ...' ; sleep 0.5
+	echo '[+] Also you can run ./radic --help'
+
 	disk_check=0
 	for (( ;; )) ; do
 
