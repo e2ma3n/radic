@@ -2,10 +2,9 @@
 # Programming and idea by : E2MA3N [Iman Homayouni]
 # Github : https://github.com/e2ma3n
 # Email : e2ma3n@Gmail.com
-# Special tnx to : Mohamad Varmazyar, varmazyar@oslearn.ir
 # Website : http://OSLearn.ir
 # License : GPL v3.0
-# radic v1.5 [checking memory, cpu, disk usages and send email and sms alarm when these where full]
+# radic v1.6 [checking memory, cpu, disk usages and send email and sms alarm when these where full]
 # ------------------------------------------------------------------------------------------------ #
 
 # check root privilege
@@ -21,33 +20,67 @@ function help_f {
 
 # install program on system
 function install_f {
-	[ ! -d /opt/radic_v1.5/ ] && mkdir -p /opt/radic_v1.5/ && echo "[+] Directory created" || echo "[-] Error: /opt/radic_v1.5/ exist"
+	reset
+	# print header
+	echo '[+] ---------------------------------------------------------------------------------------------------------------------- [+]'
+	sleep 1.5
+	echo '[+] Radic v1.6'
+
+	sleep 1.5
+	echo '[+] This is a simple program for alerting sysadmins with text message and email in emergency conditions'
+
+	sleep 1.5
+	echo '[+] Programming and idea by : E2MA3N [Iman Homayouni]'
+
+	sleep 1.5
+	echo '[+] http://www.oslearn.ir'
+
+	sleep 1.5
+	echo '[+] Tested on all popular linux distributions such as debian 8, CentOS 6 and Ubuntu 14.04 LTS'
+
+	sleep 2.5
+	echo -en '[+] please insert "enter" key for continue or press ctrl+c for exit' ; read
+	sleep 4
+
+	[ ! -d /opt/radic_v1.6/ ] && mkdir -p /opt/radic_v1.6/ && echo "[+] Main directory created" || echo "[-] Error: /opt/radic_v1.6/ exist"
 	sleep 1
-	[ ! -f /opt/radic_v1.5/radic-core.sh ] && cp radic-core.sh /opt/radic_v1.5/ && chmod 700 /opt/radic_v1.5/radic-core.sh && echo "[+] radic-core.sh copied" || echo "[-] Error: /opt/radic_v1.5/radic-core.sh exist"
+	[ ! -f /opt/radic_v1.6/radic.conf ] && cp radic.conf /opt/radic_v1.6/ && chmod 700 /opt/radic_v1.6/radic.conf && echo "[+] radic.conf copied" || echo "[-] Error: /opt/radic_v1.6/radic.conf exist"
 	sleep 1
-	[ ! -f /opt/radic_v1.5/radic.conf ] && cp radic.conf /opt/radic_v1.5/ && chmod 700 /opt/radic_v1.5/radic.conf && echo "[+] radic.conf copied" || echo "[-] Error: /opt/radic_v1.5/radic.conf exist"
+	[ ! -f /opt/radic_v1.6/radic.sh ] && cp radic.sh /opt/radic_v1.6/ && chmod 700 /opt/radic_v1.6/radic.sh && echo "[+] radic.sh copied" || echo "[-] Error: /opt/radic_v1.6/radic.sh exist"
 	sleep 1
-	[ ! -f /opt/radic_v1.5/radic.sh ] && cp radic.sh /opt/radic_v1.5/ && chmod 700 /opt/radic_v1.5/radic.sh && echo "[+] radic.sh copied" || echo "[-] Error: /opt/radic_v1.5/radic.sh exist"
+	[ ! -d /opt/radic_v1.6/log/ ] && mkdir -p /opt/radic_v1.6/log/ && echo "[+] Log directory created" || echo "[-] /opt/radic_v1.6/log/ exist"
 	sleep 1
-	[ -f /opt/radic_v1.5/radic.sh ] && ln -s /opt/radic_v1.5/radic.sh /usr/bin/radic && echo "[+] symbolic link created" || echo "[-] Error: symbolic link not created"
+	[ ! -f /opt/radic_v1.6/README.md ] && cp README.md /opt/radic_v1.6/ ; echo '[+] Please see README.md'
 	sleep 1
-	[ ! -d /opt/radic_v1.5/log/ ] && mkdir -p /opt/radic_v1.5/log/ && echo "[+] Log Directory created" || echo "[-] /opt/radic_v1.5/log/ exist"
+
+	echo -en '[+] Add /opt/radic_v1.6/radic.sh to /etc/crontab : '
+
+	if [ -f /etc/crontab ] ; then
+		cat /etc/crontab | grep '@reboot root /opt/radic_v1.6/radic.sh' &> /dev/null
+		if [ "$?" = "0" ] ; then
+			echo 'error ! /opt/radic_v1.6/radic.sh is exists in crontab'
+		else
+			echo '@reboot root /opt/radic_v1.6/radic.sh' >> /etc/crontab
+			echo 'done'
+		fi
+	else
+		echo 'error ! cannot access /etc/crontab: No such file or directory'
+	fi
 	sleep 1
-	[ ! -f /opt/radic_v1.5/README ] && cp README /opt/radic_v1.5/ ; echo '[+] Please see README'
-	sleep 0.5
-	echo "[+] Please see README" ; sleep 0.5
-	echo "[+] you have two choises : start manually or Starting up Script As a daemon" ; sleep 0.5
-	echo "[!] Warning: You should run program as root" ; sleep 0.5
+
+	echo "[!] Warning: You should reboot server" ; sleep 0.5
 	echo "[!] Warning: You should edit config file" ; sleep 0.5
-	echo "[+] this program now is compatible with sms[dot]ir panel" ; sleep 0.5
-	echo "[+] Done"
+	echo '[>] nano /opt/radic_v1.6/radic.conf' ; sleep 0.5
+	echo '[+]'
+	echo "[+] This program now is compatible with sms[dot]ir panel" ; sleep 0.5
+	echo "[+] Finish"
 }
 
 # uninstall program from system
 function uninstall_f {
 	echo "For uninstall program:"
-	echo "	sudo rm -rf /opt/radic_v1.5"
-	echo "	sudo rm -f /usr/bin/radic"
+	echo "	sudo rm -rf /opt/radic_v1.6"
+	echo "	remove /opt/radic_v1.6/radic.sh from /etc/crontab"
 }
 
 # check dependencies on system
