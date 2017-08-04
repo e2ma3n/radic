@@ -1,11 +1,11 @@
 # Radic - Alerting sysadmins with text message and email in emergency conditions 
 ## Introduction
-This program Written by E2MA3N for monitoring memory, cpu and disk usages On Linux Systems. this is a simple program for Alerting SysAdmins with text message and email in emergency conditions.
+This program written by E2MA3N for monitoring memory, cpu and disk usages On linux systems. this is a simple program for Alerting sysadmins with text message and email in emergency conditions.
 
 The project page is located at https://github.com/e2ma3n/radic
 
 ## What distributions are supported ?
-Tested on all popular linux distributions such as debian 7, debian 8, CentOS 6 and CentOS 7
+Tested on all popular linux distributions such as debian 8, CentOS 6 and Ubuntu 14.04
 
 * Linux Debian 8.x
 * Linux CentOS 6.x
@@ -71,11 +71,12 @@ By using -i switch :
 ```
 
 ## How to uninstall ?
-first remove radic directory
+First remove radic directory
 ```
 # rm -rf /opt/radic_v1.6/
 ```
-then. delete /opt/radic_v1.6/radic.sh from /etc/crontab
+Then. delete /opt/radic_v1.6/radic.sh from /etc/crontab
+
 
 ## Fixing centos bug :
 ```
