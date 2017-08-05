@@ -1,6 +1,6 @@
 # Radic - Alerting to sysadmins with text message and email in emergency conditions 
 ## Introduction
-This program written by E2MA3N for monitoring memory, cpu and disk usages On linux systems. this is a simple program for Alerting to sysadmins with text message and email in emergency conditions.
+This program written by E2MA3N for monitoring memory, cpu and disk usages on linux systems. this is a simple program for alerting to sysadmins with text message and email in emergency conditions.
 
 The project page is located at https://github.com/e2ma3n/radic
 
@@ -41,7 +41,7 @@ This will create loep directory in your current directory and source files are s
 ## How to check dependencies on system ?
 In the first step, set execute permission for install.sh :
 ```
-# cd loep
+# cd radic
 # chmod +x install.sh
 ```
 Then, check dependencies, using -c switch :
