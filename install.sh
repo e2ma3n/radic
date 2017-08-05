@@ -3,7 +3,7 @@
 # Github : https://github.com/e2ma3n
 # Email : e2ma3n@Gmail.com
 # Website : http://OSLearn.ir
-# License : GPL v3.0
+# License : GPL v2.0
 # radic v1.6 [checking memory, cpu, disk usages and send email and sms alarm when these where full]
 # ------------------------------------------------------------------------------------------------ #
 
